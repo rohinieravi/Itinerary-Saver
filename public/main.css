@@ -1,0 +1,52 @@
+.js-itinerarylist {
+	width: 50%;
+	margin:40px 0 40px 0;
+
+}
+
+.js-search{
+	display: inline; 
+
+}
+h1{
+	margin: 0 auto;
+}
+
+section {
+	margin-left: 50px;
+}
+
+.js-itinDetails {
+	margin: 10px 0 10px 0;
+}
+
+.js-itinDetails label {
+	display: block;
+}
+
+.js-itinDetails input, textarea {
+	margin-bottom: 15px;
+}
+
+.smlTextArea {
+	height:40px;
+	overflow-y: scroll;
+}
+
+.lrgTextArea {
+	height: 80px;
+	overflow-y: scroll;
+}
+
+#submit{
+	display: block;
+	width: 100px;
+}
+
+#destination {
+	width: 300px;
+}
+
+.hidden {
+	display:none;
+}
