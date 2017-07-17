@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Itinerary Saver</title>
+</head>
+<body>
+	<header>
+		<h1>Itinerary Saver</h1>
+		<link rel="stylesheet" type="text/css" href="main.css">
+	</header>
+	<section>
+		<h2>Enter your Itinerary Details:</h2>
+		<form class="js-itinDetails">
+			<label for="destination">Destination</label>
+			<input type="text" name="destination" id="destination" required>
+
+			<label for="days">Number of days</label>
+			<input type="Number" name="days" id="days" min="1" required>
+
+			<label for="pois">Points of Interest</label>
+			<textarea class="smlTextArea" id="pois" name="pois" cols="40" rows="40"></textarea>
+
+			<label for="transport">Transportation Details</label>
+			<textarea class="lrgTextArea" id="transport" name="transport" cols="80" rows="100"></textarea>
+
+			<label for="lodgedetails">Lodging Details</label>
+			<textarea class="lrgTextArea" id="lodgedetails" name="lodgedetails" cols="80" rows="100"></textarea>
+
+			<label for="daywiseplan">Day-wise Plan</label>
+			<textarea class="lrgTextArea" id="" name="daywiseplan" cols="80" rows="100"></textarea>
+
+			<label for="budget">Approximate Budget</label>
+			<input type="Number" name="budget" id="budget">
+
+			<label for="travelpartner">Did you use a travel partner?</label>
+			<input type="radio" name="travelpartner" id="choiceyes" value="yes" checked>Yes
+			<input type="radio" name="travelpartner" id="choiceno" value="no">No
+
+			<label for="tpdetails">Travel Partner Details:</label>
+			<textarea class="smlTextArea" id="tpdetails" name="tpdetails" cols="40" rows="40" ></textarea>
+
+			<input type="submit" value="Submit" id="submit">
+		</form>
+	</section>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
