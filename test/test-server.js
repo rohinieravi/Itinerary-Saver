@@ -26,4 +26,5 @@ describe('Hello world', function() {
 				res.should.be.html;
 			});
 	});
+
 });
