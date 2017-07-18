@@ -20,6 +20,14 @@ section {
 	margin: 10px 0 10px 0;
 }
 
+.js-itinerarydetails {
+	margin:40px 0 40px 0;
+}
+.js-itinerarydetails div{
+	margin-bottom: 15px;
+}
+
+
 .js-itinDetails label {
 	display: block;
 }
