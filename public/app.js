@@ -60,6 +60,11 @@ var getAndDisplayItinerariesByDest = function(query) {
 
 $(function() {
 	getAndDisplayItineraries();
+	var queryString = window.location.search;
+	queryString = queryString.substring(1);
+	if(parseQueryString(queryString).newadded === "true"){
+			$(".newadded").removeClass("hidden");
+	}
 });
 
 $("input[name='itinerary']").click(function(event){

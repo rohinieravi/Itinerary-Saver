@@ -7,8 +7,7 @@ var postItineraryDetails = function(item, callback) {
 
 var renderNewItineraryAdded = function(data) {
 	window.location.reload(true);
-    window.location.href = 'index.html';
-	$(".newadded").removeClass("hidden");
+    window.location.href = 'index.html?newadded=true';
 };
 
 $("#choiceno").click(function(event) {
