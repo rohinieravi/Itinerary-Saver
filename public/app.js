@@ -1,11 +1,17 @@
-
-
+var API_URL = "https://fast-savannah-13472.herokuapp.com";
 
 var getItineraryList = function(callback) {
-	if(MOCK_ITINERARIES.itineraries.length === 0) {
+	/*if(MOCK_ITINERARIES.itineraries.length === 0) {
 		seedData();
 	}
-	setTimeout(function(){ callback(MOCK_ITINERARIES)}, 100);
+	setTimeout(function(){ callback(MOCK_ITINERARIES)}, 100);*/
+	var settings = {
+		url: API_URL + '/itineraries',
+		datatype: 'json',
+		type: 'GET',
+		success: callback
+	};
+	$.ajax(settings);
 };
 
 var getItineraryByDestination = function(query, callback) {
