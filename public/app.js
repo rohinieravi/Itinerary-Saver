@@ -1,3 +1,4 @@
+
 var API_URL = "https://fast-savannah-13472.herokuapp.com";
 
 var getItineraryList = function(callback) {
@@ -46,13 +47,16 @@ var renderItineraryList = function(itinList) {
 	var list;
 	itinList.forEach(function(item) {
 		list += "<tr class='row'>"+
+
 				"<td class='js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a></td>" +
+
 				"<td>" + item.postedBy + "</td>" +
 				"<td>" + item.postedDate + "</td>"+
 				"</tr>";
 	});
 	$(".js-itinerarylist").append(list);
 }
+
 
 var getAndDisplayItineraries = function() {
 	getItineraryList(displayItineraries);
@@ -83,6 +87,5 @@ $(".js-search").submit(function(event) {
 	var query = $(this).find('.js-input').val();
 	getAndDisplayItinerariesByDest(query);
 });
-
 
 
