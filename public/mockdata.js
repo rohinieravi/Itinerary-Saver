@@ -1,8 +1,11 @@
 var MOCK_ITINERARIES = {
 	"itineraries": []
 };
-const MY_POSTER_ID = "11";
-const MY_POSTER_NAME = "Sally";
+const MY_POSTER_ID = 11;
+const MY_POSTER_FNAME = "Sally";
+const MY_POSTER_LNAME = "Sam";
+var API_URL = "https://fast-savannah-13472.herokuapp.com";
+
 
 var seedData = function() {
 	MOCK_ITINERARIES.itineraries.push({

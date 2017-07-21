@@ -31,12 +31,12 @@ var displayItineraries = function(data) {
 	var itinList;
 	
 	if(itinType === "myitinerary") {
-		itinList = data.itineraries.filter(function(item) {
+		itinList = data.filter(function(item) {
 			return item.posterId === MY_POSTER_ID;
 		});
 	}
 	else {
-		itinList = data.itineraries.filter(function(item) {
+		itinList = data.filter(function(item) {
 			return item.posterId !== MY_POSTER_ID;
 		});
 	}
@@ -50,7 +50,8 @@ var renderItineraryList = function(itinList) {
 
 				"<td class='js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a></td>" +
 
-				"<td>" + item.postedBy + "</td>" +
+				"<td>" + item.poster + "</td>" +
+
 				"<td>" + item.postedDate + "</td>"+
 				"</tr>";
 	});

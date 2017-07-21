@@ -1,8 +1,16 @@
-var ID = 0;
+
 
 var postItineraryDetails = function(item, callback) {
-	MOCK_ITINERARIES.itineraries.push(item);
-	setTimeout(function(){ callback(MOCK_ITINERARIES)}, 100);
+	/*MOCK_ITINERARIES.itineraries.push(item);
+	setTimeout(function(){ callback(MOCK_ITINERARIES)}, 100);*/
+	var settings = {
+		url: API_URL + '/itineraries',
+		data: item,
+		datatype: 'json',
+		type: 'POST',
+		success: callback
+	};
+	$.ajax(settings);
 };
 
 var renderNewItineraryAdded = function(data) {
@@ -21,7 +29,6 @@ $("#choiceyes").click(function(event) {
 $(".js-itinDetails").submit(function(event) {
 	event.preventDefault();
 	var newItin = {
-		id : ID +1,
 		destination: $("#destination").val().trim(),
 		days: $("#days").val(),
 		pois: $("#pois").val(),
@@ -31,9 +38,11 @@ $(".js-itinDetails").submit(function(event) {
 		budget: $("#budget").val(),
 		travelPartner: $("input[name='travelpartner']:checked").val(),
 		tpDetails: $("#tpdetails").val(),
-		postedBy: MY_POSTER_NAME,
-		posterId: MY_POSTER_ID,
-		postedDate: Date.now()
+		poster: {
+		firstName: MY_POSTER_FNAME,
+		lastName: MY_POSTER_LNAME,
+		id: MY_POSTER_ID
+		}
 	};
 	postItineraryDetails(newItin, renderNewItineraryAdded);
 });
