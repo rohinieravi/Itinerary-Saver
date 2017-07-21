@@ -1,9 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Itinerary Saver</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-	<p>Hello World</p>
+	<header>
+		<h1>Itinerary Saver</h1>
+	</header>
+	<section>
+		
+		<h2>Itineraries</h2>
+		<div>
+			<input type="radio" name="itinerary" id="radio1" value="myitinerary" checked>
+			<label>My itineraries</label>
+			<input type="radio" name="itinerary" id="radio2" value="otheritinerary">
+			<label>Itineraries by others</label>
+			<form class="js-search">
+				<input type="text" name="search" class="js-input">			
+				<button type="submit" name="submit" >Search</button>
+			</form>
+		</div>
+		<table class="js-itinerarylist">
+			<tr>
+				<th>Destination</th>
+				<th>Posted by</th>
+				<th>Date posted</th	>
+			</tr>
+		</table>
+		<div class="newitinerary">
+			<a href="add-itinerary.html">+ Add an Itinerary</a>
+			<div class="newadded hidden">New Itinerary added !</div>
+		</div>
+	</section>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+	<script src="mockdata.js"></script>
+	<script src="app.js"></script>
 </body>
 </html>

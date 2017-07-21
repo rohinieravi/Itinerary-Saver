@@ -1,37 +1,112 @@
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-var app = express();
+const {DATABASE_URL, PORT} = require('./config');
+const {Itinerary} = require('./models');
 
-app.use(morgan('common'));
+const app = express();
 
 app.use(express.static('public'));
+app.use(morgan('common'));
+app.use(bodyParser.json());
+
+mongoose.Promise = global.Promise;
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.get('/itineraries', (req, res) => {
+  Itinerary
+    .find()
+    .exec()
+    .then(items => {
+      res.json(items.map(item => item.apiRepr()));
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
+app.get('/itineraries/:id', (req, res) => {
+  Itinerary
+    .findById(req.params.id)
+    .exec()
+    .then(item => res.json(item.apiRepr()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went horribly awry'});
+    });
+});
+
+app.post('/itineraries', (req, res) => {
+  const requiredFields = ['destination', 'poster', 'days', 'pois'];
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing ${field} in request body`
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
+
+  Itinerary
+    .create({
+      destination: req.body.destination,
+      poster: req.body.poster,
+      days: req.body.days,
+      pois: req.body.pois,
+      transportDetails: req.body.transportDetails,
+      lodgeDetails: req.body.lodgeDetails,
+      dayWisePlan: req.body.dayWisePlan,
+      budget: req.body.budget,
+      travelPartner: req.body.travelPartner,
+      tpDetails: req.body.tpDetails
+    })
+    .then(item => res.status(201).json(item.apiRepr()))
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong'});
+    });
+
+});
 
 let server;
 
-function runServer() {
-  const port = process.env.PORT || 8040;
+function runServer(databaseUrl=DATABASE_URL, port=PORT) {
   return new Promise((resolve, reject) => {
-    server = app.listen(port, () => {
-      console.log(`Your app is listening on port ${port}`);
-      resolve(server);
-    }).on('error', err => {
-      reject(err)
+    mongoose.connect(databaseUrl, err => {
+      if (err) {
+        return reject(err);
+      }
+      server = app.listen(port, () => {
+        console.log(`Your app is listening on port ${port}`);
+        resolve();
+      })
+      .on('error', err => {
+        mongoose.disconnect();
+        reject(err);
+      });
     });
   });
 }
 
 function closeServer() {
-	return new Promise((resolve, reject) => {
-    console.log('Closing server');
-    server.close(err => {
-      if (err) {
-        reject(err);
-        // so we don't also call `resolve()`
-        return;
-      }
-      resolve();
-    });
+  return mongoose.disconnect().then(() => {
+     return new Promise((resolve, reject) => {
+       console.log('Closing server');
+       server.close(err => {
+           if (err) {
+               return reject(err);
+           }
+           resolve();
+       });
+     });
   });
 }
 

@@ -6,6 +6,7 @@ const MY_POSTER_FNAME = "Sally";
 const MY_POSTER_LNAME = "Sam";
 var API_URL = "https://fast-savannah-13472.herokuapp.com";
 
+
 var seedData = function() {
 	MOCK_ITINERARIES.itineraries.push({
 		"id":"1111",
