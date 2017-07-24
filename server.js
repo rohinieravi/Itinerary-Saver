@@ -66,7 +66,8 @@ app.post('/itineraries', (req, res) => {
       dayWisePlan: req.body.dayWisePlan,
       budget: req.body.budget,
       travelPartner: req.body.travelPartner,
-      tpDetails: req.body.tpDetails
+      tpDetails: req.body.tpDetails,
+      postedDate: req.body.postedDate
     })
     .then(item => res.status(201).json(item.apiRepr()))
     .catch(err => {

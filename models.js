@@ -15,7 +15,7 @@ const itinerarySchema = mongoose.Schema({
   budget: Number,
   travelPartner: String,
   tpDetails: String,
-  postedDate: {type: Date, default: Date.now}
+  postedDate: String
 });
 
 
