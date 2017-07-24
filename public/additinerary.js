@@ -5,7 +5,7 @@ var postItineraryDetails = function(item, callback) {
 	setTimeout(function(){ callback(MOCK_ITINERARIES)}, 100);*/
 	var settings = {
 		url: API_URL + '/itineraries',
-		data: item,
+		data: JSON.stringify(item),
 		datatype: 'json',
 		type: 'POST',
 		contentType: 'application/json',
@@ -42,8 +42,9 @@ $(".js-itinDetails").submit(function(event) {
 		poster: {
 		firstName: MY_POSTER_FNAME,
 		lastName: MY_POSTER_LNAME,
-		id: MY_POSTER_ID
-		}
+		id: MY_POSTER_ID,
+		},
+		postedDate: new Date().toDateString()
 	};
 	postItineraryDetails(newItin, renderNewItineraryAdded);
 });

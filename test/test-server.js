@@ -32,7 +32,8 @@ function generateItineraryData() {
 		dayWisePlan: faker.lorem.paragraphs(),
 		budget: faker.random.number(),
 		travelPartner: "yes",
-		tpDetails: faker.lorem.words()
+		tpDetails: faker.lorem.words(),
+		postedDate: new Date().toDateString()
 	}
 }
 
@@ -109,7 +110,7 @@ describe('Itinerary API resource', function() {
           return Itinerary.findById(resItin.id);
         })
         .then(function({id, destination, poster, days, pois, transportDetails, 
-              lodgeDetails, dayWisePlan, budget, travelPartner, tpDetails}) {
+              lodgeDetails, dayWisePlan, budget, travelPartner, tpDetails, postedDate}) {
           resItin.id.should.equal(id);
           resItin.destination.should.equal(destination);
           resItin.days.should.equal(days);
@@ -123,6 +124,7 @@ describe('Itinerary API resource', function() {
           resItin.poster.should.contain(poster.firstName);
           resItin.poster.should.contain(poster.lastName);
           resItin.posterId.should.equal(poster.id);
+          resItin.postedDate.should.equal(postedDate);
         });
     });
   });
@@ -157,10 +159,11 @@ describe('Itinerary API resource', function() {
           res.body.poster.should.contain(newItem.poster.firstName);
           res.body.poster.should.contain(newItem.poster.lastName);
           res.body.posterId.should.equal(newItem.poster.id);
+          res.body.postedDate.should.equal(newItem.postedDate);
           return Itinerary.findById(res.body.id);
         })
         .then(function({destination, poster, days, pois, transportDetails, 
-              lodgeDetails, dayWisePlan, budget, travelPartner, tpDetails}) {
+              lodgeDetails, dayWisePlan, budget, travelPartner, tpDetails, postedDate}) {
           destination.should.equal(newItem.destination);
           poster.id.should.equal(newItem.poster.id);
           poster.firstName.should.equal(newItem.poster.firstName);
@@ -173,6 +176,7 @@ describe('Itinerary API resource', function() {
           budget.should.equal(newItem.budget);
           travelPartner.should.equal(newItem.travelPartner);
           tpDetails.should.equal(newItem.tpDetails);
+          postedDate.should.equal(newItem.postedDate);
         });
     });
   });
