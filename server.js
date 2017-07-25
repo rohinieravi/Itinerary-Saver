@@ -40,9 +40,23 @@ app.get('/itineraries/:id', (req, res) => {
     .then(item => res.json(item.apiRepr()))
     .catch(err => {
       console.error(err);
+      res.status(500).json({error: 'something went horribly bad'});
+    });
+});
+
+app.get('/itineraries/search/:destination', (req, res) => {
+  Itinerary
+    .find({destination: new RegExp(req.params.destination,'i')})
+    .exec()
+    .then(items => {
+      res.json(items.map(item => item.apiRepr()));
+    })
+    .catch(err => {
+      console.error(err);
       res.status(500).json({error: 'something went horribly awry'});
     });
 });
+
 
 app.post('/itineraries', (req, res) => {
   const requiredFields = ['destination', 'poster', 'days', 'pois'];
