@@ -135,7 +135,6 @@ describe('Itinerary API resource', function() {
       	.findOne()
       	.exec()
       	.then(function(res){
-      		console.log(res.destination);
       		return chai.request(app)
             .get(`/itineraries/search/${res.destination}`)
         })
@@ -155,7 +154,6 @@ describe('Itinerary API resource', function() {
           return Itinerary.find({destination: new RegExp(resItin.destination,'i')});
         })
         .then(function(res) {
-        	console.log(res);
           resItin.id.should.equal(res[0].id);
           resItin.destination.should.equal(res[0].destination);
           resItin.days.should.equal(res[0].days);

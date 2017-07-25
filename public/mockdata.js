@@ -4,8 +4,8 @@ var MOCK_ITINERARIES = {
 const MY_POSTER_ID = 11;
 const MY_POSTER_FNAME = "Sally";
 const MY_POSTER_LNAME = "Sam";
-//var API_URL = "https://fast-savannah-13472.herokuapp.com";
-var API_URL = "http://localhost:8080";
+var API_URL = "https://fast-savannah-13472.herokuapp.com";
+//var API_URL = "http://localhost:8080";
 
 var seedData = function() {
 	MOCK_ITINERARIES.itineraries.push({
