@@ -127,6 +127,51 @@ describe('Itinerary API resource', function() {
           resItin.postedDate.should.equal(postedDate);
         });
     });
+
+    it('should return itineraries with right fields when searched by destination', function() {
+
+      let resItin;
+      return Itinerary
+      	.findOne()
+      	.exec()
+      	.then(function(res){
+      		console.log(res.destination);
+      		return chai.request(app)
+            .get(`/itineraries/search/${res.destination}`)
+        })
+        .then(function(res){
+        	res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('array');
+          res.body.should.have.lengthOf.at.least(1);
+          res.body.forEach(function(item) {
+            item.should.be.a('object');
+            item.should.include.keys(
+              'id', 'destination', 'poster', 'posterId', 'days', 'pois', 'transportDetails', 
+              'lodgeDetails', 'dayWisePlan', 'budget', 'travelPartner', 'tpDetails',
+              'postedDate');
+          });
+        	resItin = res.body[0];
+          return Itinerary.find({destination: new RegExp(resItin.destination,'i')});
+        })
+        .then(function(res) {
+        	console.log(res);
+          resItin.id.should.equal(res[0].id);
+          resItin.destination.should.equal(res[0].destination);
+          resItin.days.should.equal(res[0].days);
+          resItin.pois.should.equal(res[0].pois);
+          resItin.transportDetails.should.equal(res[0].transportDetails);
+          resItin.lodgeDetails.should.equal(res[0].lodgeDetails);
+          resItin.dayWisePlan.should.equal(res[0].dayWisePlan);
+          resItin.budget.should.equal(res[0].budget);
+          resItin.travelPartner.should.equal(res[0].travelPartner);
+          resItin.tpDetails.should.equal(res[0].tpDetails);
+          resItin.poster.should.contain(res[0].poster.firstName);
+          resItin.poster.should.contain(res[0].poster.lastName);
+          resItin.posterId.should.equal(res[0].poster.id);
+          resItin.postedDate.should.equal(res[0].postedDate);
+        });
+    });
   });
 
 	describe('POST endpoint', function() {

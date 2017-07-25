@@ -14,14 +14,21 @@ var getItineraryList = function(callback) {
 	$.ajax(settings);
 };
 
-var getItineraryByDestination = function(query, callback) {
-	if(MOCK_ITINERARIES.itineraries.length === 0) {
+var getItineraryByDestination = function(destination, callback) {
+	/*if(MOCK_ITINERARIES.itineraries.length === 0) {
 		seedData();
 	}
 	var ItinByDest = {"itineraries":MOCK_ITINERARIES.itineraries.filter(function(item){
 		return item.destination.toLowerCase() == query.toLowerCase().trim();
 	})};
-	setTimeout(function(){ callback(ItinByDest)}, 100);
+	setTimeout(function(){ callback(ItinByDest)}, 100);*/
+	var settings = {
+		url: API_URL + '/itineraries/search/'+ destination,
+		datatype: 'json',
+		type: 'GET',
+		success: callback
+	};
+	$.ajax(settings);
 };
 
 var displayItineraries = function(data) {
