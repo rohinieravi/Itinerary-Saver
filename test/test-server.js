@@ -33,7 +33,7 @@ function generateItineraryData() {
 		budget: faker.random.number(),
 		travelPartner: "yes",
 		tpDetails: faker.lorem.words(),
-		postedDate: new Date().toDateString()
+		postedDate: new Date()
 	}
 }
 
@@ -124,7 +124,7 @@ describe('Itinerary API resource', function() {
           resItin.poster.should.contain(poster.firstName);
           resItin.poster.should.contain(poster.lastName);
           resItin.posterId.should.equal(poster.id);
-          resItin.postedDate.should.equal(postedDate);
+          resItin.postedDate.should.equal(new Date(postedDate));
         });
     });
 

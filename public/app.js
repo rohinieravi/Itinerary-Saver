@@ -50,7 +50,7 @@ var renderItineraryList = function(itinList) {
 		list += "<div class='row tRow'>"+
 				"<div class='col-3 js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a></div>" +
 				"<div class='col-3'>" + item.poster + "</div>" +
-				"<div class='col-3'>" + item.postedDate + "</div>"+
+				"<div class='col-3'>" + new Date(item.postedDate).toDateString() + "</div>"+
 				"</div>";
 	});
 	$(".js-itinerarylist").append(list);

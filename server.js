@@ -23,6 +23,7 @@ app.use(function(req, res, next) {
 app.get('/itineraries', (req, res) => {
   Itinerary
     .find()
+    .sort({postedDate:1})
     .exec()
     .then(items => {
       res.json(items.map(item => item.apiRepr()));
