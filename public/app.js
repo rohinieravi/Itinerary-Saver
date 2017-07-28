@@ -1,10 +1,5 @@
-
-
+//API request to get all itineraries
 var getItineraryList = function(callback) {
-	/*if(MOCK_ITINERARIES.itineraries.length === 0) {
-		seedData();
-	}
-	setTimeout(function(){ callback(MOCK_ITINERARIES)}, 100);*/
 	var settings = {
 		url: API_URL + '/itineraries',
 		datatype: 'json',
@@ -50,14 +45,13 @@ var displayItineraries = function(data) {
 };
 
 var renderItineraryList = function(itinList) {
-	var list;
+	var list='';
 	itinList.forEach(function(item) {
-		list += "<tr class='row'>"+
-
-				"<td class='js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a></td>" +
-				"<td>" + item.poster + "</td>" +
-				"<td>" + item.postedDate + "</td>"+
-				"</tr>";
+		list += "<div class='row tRow'>"+
+				"<div class='col-3 js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a></div>" +
+				"<div class='col-3'>" + item.poster + "</div>" +
+				"<div class='col-3'>" + item.postedDate + "</div>"+
+				"</div>";
 	});
 	$(".js-itinerarylist").append(list);
 }
@@ -82,13 +76,13 @@ $(function() {
 });
 
 $("input[name='itinerary']").click(function(event){
-	$(".row").remove();
+	$(".tRow").remove();
 	getAndDisplayItineraries();
 });
 
 $(".js-search").submit(function(event) {
 	event.preventDefault();
-	$(".row").remove();
+	$(".tRow").remove();
 	var query = $(this).find('.js-input').val();
 	getAndDisplayItinerariesByDest(query);
 });

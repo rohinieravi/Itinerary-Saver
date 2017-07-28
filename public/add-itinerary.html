@@ -2,45 +2,87 @@
 <html>
 <head>
 	<title>Itinerary Saver</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="float-grid.css">
+	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
 </head>
 <body>
 	<header>
+		<div class="row">
+		<div class="col-6">
 		<h1>Itinerary Saver</h1>
-		<link rel="stylesheet" type="text/css" href="main.css">
+		</div>
+		</div>
 	</header>
 	<section>
+		<div class="row">
 		<h2>Enter your Itinerary Details:</h2>
+		</div>
 		<form class="js-itinDetails">
+			<div class="row">
+			<div class="col-6">
 			<label for="destination">Destination</label>
 			<input type="text" name="destination" id="destination" required>
-
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-6">
 			<label for="days">Number of days</label>
 			<input type="Number" name="days" id="days" min="1" required>
-
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-6">
 			<label for="pois">Points of Interest</label>
 			<textarea class="smlTextArea" id="pois" name="pois" cols="40" rows="40" required></textarea>
-
-
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-6">
 			<label for="transport">Transportation Details</label>
 			<textarea class="lrgTextArea" id="transport" name="transport" cols="80" rows="100"></textarea>
-
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-6">
 			<label for="lodgedetails">Lodging Details</label>
 			<textarea class="lrgTextArea" id="lodgedetails" name="lodgedetails" cols="80" rows="100"></textarea>
-
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-6">
 			<label for="daywiseplan">Day-wise Plan</label>
 			<textarea class="lrgTextArea" id="daywiseplan" name="daywiseplan" cols="80" rows="100"></textarea>
-
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-6">
 			<label for="budget">Approximate Budget</label>
 			<input type="Number" name="budget" id="budget" placeholder="$">
-
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-6">
 			<label for="travelpartner">Did you use a travel partner?</label>
 			<input type="radio" name="travelpartner" id="choiceyes" value="yes" checked>Yes
 			<input type="radio" name="travelpartner" id="choiceno" value="no">No
-
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-6">
 			<label for="tpdetails">Travel Partner Details:</label>
 			<textarea class="smlTextArea" id="tpdetails" name="tpdetails" cols="40" rows="40" ></textarea>
-
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-1">
 			<input type="submit" value="Submit" id="submit">
+			</div>
+			<div class="col-1">
+			<a href="index.html#itineraries">Cancel</a>
+			</div>
+			</div>
+			</div>
 		</form>
 	</section>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
