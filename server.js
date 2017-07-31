@@ -23,10 +23,10 @@ app.use(function(req, res, next) {
 app.get('/itineraries', (req, res) => {
   Itinerary
     .find()
-    .sort({postedDate:1})
+    .sort({postedDate:-1})
     .exec()
     .then(items => {
-      res.json(items.map(item => item.apiRepr()));
+      res.json(items.map(item =>item.apiRepr()));
     })
     .catch(err => {
       console.error(err);
@@ -58,7 +58,6 @@ app.get('/itineraries/search/:destination', (req, res) => {
     });
 });
 
-
 app.post('/itineraries', (req, res) => {
   const requiredFields = ['destination', 'poster', 'days', 'pois'];
   for (let i=0; i<requiredFields.length; i++) {
@@ -69,7 +68,6 @@ app.post('/itineraries', (req, res) => {
       return res.status(400).send(message);
     }
   }
-
   Itinerary
     .create({
       destination: req.body.destination,
@@ -89,7 +87,6 @@ app.post('/itineraries', (req, res) => {
         console.error(err);
         res.status(500).json({error: 'Something went wrong'});
     });
-
 });
 
 let server;

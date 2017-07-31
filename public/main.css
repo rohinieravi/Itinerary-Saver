@@ -1,16 +1,7 @@
-/*body {
-	background: url('../');
-	background-repeat: no-repeat;
-	background-size: cover;
-}*/
 * {
 	box-sizing: border-box;
 }
 
-.js-itinerarylist {
-	margin-top:40px;
-
-}
 body {
 	margin:0;
 	background-image: linear-gradient(rgba(0,0,0,0.2),
@@ -26,33 +17,34 @@ header {
 	background-color: black;
 	color: white;
 }
-.links{
+
+h1, h3 {
+	display: inline;
+}
+
+img {
+	width: 100%;
+}
+
+.links {
 	padding: 10px;
 	text-align: right;
 }
-.links a{
+
+.links a {
 	margin-left: 30px;
 	color: white;
 }
 
-#about, #itineraries{
+#about, #itineraries {
 	padding: 100px 0;
-
 }
 
-.newitinerary{
+.newitinerary {
 	margin-top: 40px;
 }
 
-h1{
-	display: inline;
-}
-
-img{
-	width: 100%;
-}
-
-.js-search{
+.js-search {
 	display: inline; 
 	margin-left: 20px;
 }
@@ -62,30 +54,26 @@ img{
 	margin-left: 20px;
 }
 
-
-section {
-	margin-left: 50px;
-	
-}
-
-.js-input{
+.js-input {
 	width:300px;
 	height:30px;
 	padding: 5px;
 	border-radius: 5px;
 }
-#search{
+
+#search {
 	height: 30px;
-		border-radius: 5px;
-			font-family: 'Philosopher', sans-serif;
+	border-radius: 5px;
+	font-family: 'Philosopher', sans-serif;
+}
 
-
+.js-itinerarylist {
+	margin-top:40px;
 }
 
 .js-itinDetails {
 	margin: 10px 0 10px 0;
 }
-
 
 .js-itinerarydetails {
 	margin:40px 0 40px 0;
@@ -93,7 +81,6 @@ section {
 .js-itinerarydetails div{
 	margin-bottom: 15px;
 }
-
 
 .js-itinDetails label {
 	display: block;
@@ -113,18 +100,16 @@ section {
 	overflow-y: scroll;
 }
 
-#submit{
+#submit {
 	display: block;
-	width: 100px;
+	width: 80px;
 	height:30px;
 	border-radius: 5px;
 	font-family: 'Philosopher', sans-serif;
-
 }
 
 #destination {
 	width: 300px;
-
 }
 
 .hidden {

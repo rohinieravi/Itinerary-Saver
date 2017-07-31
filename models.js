@@ -15,10 +15,10 @@ const itinerarySchema = mongoose.Schema({
   budget: Number,
   travelPartner: String,
   tpDetails: String,
-  postedDate: {type: Date, default:Date.now}
+  postedDate: {type: Date, default: Date.now}
 });
 
-
+//returns the poster name as a combination of firsy and last name
 itinerarySchema.virtual('posterName').get(function() {
   return `${this.poster.firstName} ${this.poster.lastName}`.trim();
 });

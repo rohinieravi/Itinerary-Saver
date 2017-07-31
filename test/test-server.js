@@ -11,16 +11,17 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-function seedItineraryData(){	
+//seeds data into the test db
+function seedItineraryData() {	
   console.info('seeding itinerary data');
   const seedData = [];
-
   for (let i=1; i<=10; i++) {
     seedData.push(generateItineraryData());
   }
   return Itinerary.insertMany(seedData);
 }
 
+//generates fake itinerary data
 function generateItineraryData() {
 	return {
 		destination: faker.address.city(),
@@ -33,10 +34,11 @@ function generateItineraryData() {
 		budget: faker.random.number(),
 		travelPartner: "yes",
 		tpDetails: faker.lorem.words(),
-		postedDate: new Date()
+		postedDate: new Date
 	}
 }
 
+//generates fake details for the poster
 function generatePosterData() {
 	return {
 		id: faker.random.number(),
@@ -49,7 +51,6 @@ function tearDownDb() {
     console.warn('Deleting database');
     return mongoose.connection.dropDatabase();
 }
-
 
 describe('Itinerary API resource', function() {
 
@@ -72,7 +73,6 @@ describe('Itinerary API resource', function() {
 	describe('GET endpoint', function() {
 
     it('should return all itineraries', function() {
-
       let res;
       return chai.request(app)
         .get('/itineraries')
@@ -87,9 +87,7 @@ describe('Itinerary API resource', function() {
         });
     });
 
-
     it('should return itineraries with right fields', function() {
-
       let resItin;
       return chai.request(app)
         .get('/itineraries')
@@ -98,7 +96,6 @@ describe('Itinerary API resource', function() {
           res.should.be.json;
           res.body.should.be.a('array');
           res.body.should.have.lengthOf.at.least(1);
-
           res.body.forEach(function(item) {
             item.should.be.a('object');
             item.should.include.keys(
@@ -124,12 +121,11 @@ describe('Itinerary API resource', function() {
           resItin.poster.should.contain(poster.firstName);
           resItin.poster.should.contain(poster.lastName);
           resItin.posterId.should.equal(poster.id);
-          resItin.postedDate.should.equal(new Date(postedDate));
+          (new Date(resItin.postedDate).toDateString()).should.equal(postedDate.toDateString());
         });
     });
 
     it('should return itineraries with right fields when searched by destination', function() {
-
       let resItin;
       return Itinerary
       	.findOne()
@@ -167,7 +163,7 @@ describe('Itinerary API resource', function() {
           resItin.poster.should.contain(res[0].poster.firstName);
           resItin.poster.should.contain(res[0].poster.lastName);
           resItin.posterId.should.equal(res[0].poster.id);
-          resItin.postedDate.should.equal(res[0].postedDate);
+          (new Date(resItin.postedDate).toDateString()).should.equal(res[0].postedDate.toDateString());
         });
     });
   });
@@ -175,9 +171,7 @@ describe('Itinerary API resource', function() {
 	describe('POST endpoint', function() {
 
     it('should add a new itinerary', function() {
-
       const newItem = generateItineraryData();
-
       return chai.request(app)
         .post('/itineraries')
         .send(newItem)
@@ -202,7 +196,7 @@ describe('Itinerary API resource', function() {
           res.body.poster.should.contain(newItem.poster.firstName);
           res.body.poster.should.contain(newItem.poster.lastName);
           res.body.posterId.should.equal(newItem.poster.id);
-          res.body.postedDate.should.equal(newItem.postedDate);
+          (new Date(res.body.postedDate).toDateString()).should.equal(newItem.postedDate.toDateString());
           return Itinerary.findById(res.body.id);
         })
         .then(function({destination, poster, days, pois, transportDetails, 
@@ -219,7 +213,7 @@ describe('Itinerary API resource', function() {
           budget.should.equal(newItem.budget);
           travelPartner.should.equal(newItem.travelPartner);
           tpDetails.should.equal(newItem.tpDetails);
-          postedDate.should.equal(newItem.postedDate);
+          (new Date(postedDate).toDateString()).should.equal(newItem.postedDate.toDateString());
         });
     });
   });
