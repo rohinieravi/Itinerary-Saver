@@ -1,8 +1,5 @@
-
-
+//API call to post the new itinerary details
 var postItineraryDetails = function(item, callback) {
-	/*MOCK_ITINERARIES.itineraries.push(item);
-	setTimeout(function(){ callback(MOCK_ITINERARIES)}, 100);*/
 	var settings = {
 		url: API_URL + '/itineraries',
 		data: JSON.stringify(item),
@@ -14,19 +11,23 @@ var postItineraryDetails = function(item, callback) {
 	$.ajax(settings);
 };
 
+//callback method that confirms that the new itinerary was added
 var renderNewItineraryAdded = function(data) {
 	window.location.reload(true);
     window.location.href = 'index.html?newadded=true';
 };
 
+//Event listener for travel partner 'no' radio input 
 $("#choiceno").click(function(event) {
 	$("#tpdetails").attr("disabled", true);
 });
 
+//Event listener for travel partner 'yes' radio input 
 $("#choiceyes").click(function(event) {
 	$("#tpdetails").attr("disabled", false);
 });
 
+//Event listener for the new itinerary details form submission
 $(".js-itinDetails").submit(function(event) {
 	event.preventDefault();
 	var newItin = {
@@ -44,7 +45,7 @@ $(".js-itinDetails").submit(function(event) {
 		lastName: MY_POSTER_LNAME,
 		id: MY_POSTER_ID,
 		},
-		postedDate: new Date().toDateString()
+		postedDate: new Date()
 	};
 	postItineraryDetails(newItin, renderNewItineraryAdded);
 });

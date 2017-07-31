@@ -1,10 +1,5 @@
-
-
+//API request to get all itineraries
 var getItineraryList = function(callback) {
-	/*if(MOCK_ITINERARIES.itineraries.length === 0) {
-		seedData();
-	}
-	setTimeout(function(){ callback(MOCK_ITINERARIES)}, 100);*/
 	var settings = {
 		url: API_URL + '/itineraries',
 		datatype: 'json',
@@ -14,14 +9,8 @@ var getItineraryList = function(callback) {
 	$.ajax(settings);
 };
 
+//API request to get itineraries based on destination
 var getItineraryByDestination = function(destination, callback) {
-	/*if(MOCK_ITINERARIES.itineraries.length === 0) {
-		seedData();
-	}
-	var ItinByDest = {"itineraries":MOCK_ITINERARIES.itineraries.filter(function(item){
-		return item.destination.toLowerCase() == query.toLowerCase().trim();
-	})};
-	setTimeout(function(){ callback(ItinByDest)}, 100);*/
 	var settings = {
 		url: API_URL + '/itineraries/search/'+ destination,
 		datatype: 'json',
@@ -31,9 +20,9 @@ var getItineraryByDestination = function(destination, callback) {
 	$.ajax(settings);
 };
 
+//API callback that filters itineraries based on user
 var displayItineraries = function(data) {
 	var itinType = $("input[name='itinerary']:checked").val();
-
 	var itinList;
 	
 	if(itinType === "myitinerary") {
@@ -49,29 +38,30 @@ var displayItineraries = function(data) {
 	renderItineraryList(itinList);
 };
 
+//Renders all filtered itineraries
 var renderItineraryList = function(itinList) {
-	var list;
+	var list='';
 	itinList.forEach(function(item) {
-		list += "<tr class='row'>"+
-
-				"<td class='js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a></td>" +
-				"<td>" + item.poster + "</td>" +
-				"<td>" + item.postedDate + "</td>"+
-				"</tr>";
+		list += "<div class='row tRow'>"+
+				"<div class='col-3 js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a></div>" +
+				"<div class='col-3'>" + item.poster + "</div>" +
+				"<div class='col-3'>" + new Date(item.postedDate).toDateString() + "</div>"+
+				"</div>";
 	});
 	$(".js-itinerarylist").append(list);
 }
 
-
+//gets itineraries from API and displays them
 var getAndDisplayItineraries = function() {
 	getItineraryList(displayItineraries);
 };
 
+//gets itineraries with specified destination and displays them
 var getAndDisplayItinerariesByDest = function(query) {
 	getItineraryByDestination(query,displayItineraries);
 };
 
-
+//Invokes getAndDisplayItineraries method on page load
 $(function() {
 	getAndDisplayItineraries();
 	var queryString = window.location.search;
@@ -81,14 +71,16 @@ $(function() {
 	}
 });
 
-$("input[name='itinerary']").click(function(event){
-	$(".row").remove();
+//Event listener for the radio input to filter itinerary list
+$("input[name='itinerary']").click(function(event) {
+	$(".tRow").remove();
 	getAndDisplayItineraries();
 });
 
+//Event listener for search form that generates itinerary list for specified destination
 $(".js-search").submit(function(event) {
 	event.preventDefault();
-	$(".row").remove();
+	$(".tRow").remove();
 	var query = $(this).find('.js-input').val();
 	getAndDisplayItinerariesByDest(query);
 });
