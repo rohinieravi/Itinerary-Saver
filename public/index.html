@@ -19,45 +19,36 @@
 		</div>
 	</header>
 	<main>
-		<img src="images/bgImage.jpg">
+		<div class="bg"></div>
 		<section id="itineraries">
 			<div class="row">
 				<h2>Itineraries</h2>
-				<input type="radio" name="itinerary" id="radio1" value="myitinerary" checked>
-				<label>My itineraries</label>
-				<input type="radio" name="itinerary" id="radio2" value="otheritinerary">
-				<label>Itineraries by others</label>
-				<form class="js-search">
-					<input type="text" name="search" class="js-input" placeholder="Enter destination">			
-					<button type="submit" name="submit" id="search">Search</button>
-				</form>
+				<div class="col-12">
+					<input type="radio" name="itinerary" id="radio1" value="myitinerary" checked>
+					<label>My itineraries</label>
+					<input type="radio" name="itinerary" id="radio2" value="otheritinerary">
+					<label>Itineraries by others</label>
+					<form class="js-search">
+						<input type="text" name="search" class="js-input" placeholder="Enter destination">			
+						<button type="submit" name="submit" id="search">Search</button>
+					</form>
+				</div>
 			</div>
-			<div class="js-itinerarylist">
+			<div class="js-itinerarylist"></div>
 			<div class="row">
-				<div class="col-3">
-					<h3>Destination</h3>
-				</div>
-				<div class="col-3">
-					<h3>Posted by</h3>
-				</div>
-				<div class="col-3">
-					<h3>Date posted</h3>
+				<div class="newitinerary">
+					<button class="js-addItin">+ Add an Itinerary</button>
+					<!--<a href="add-itinerary.html">+ Add an Itinerary</a>-->
+					<div class="newadded hidden">New Itinerary added !</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="newitinerary">
-				<a href="add-itinerary.html">+ Add an Itinerary</a>
-				<div class="newadded hidden">New Itinerary added !</div>
+		</section>
+		<section id="about">
+			<div class="row">
+				<h2>About</h2>
+				<p>Whether it be to look up a previous trip itinerary or to plan a trip in the future, the Itinerary Saver is here to help. Simply save your itinerary here as and when you plan your trip so that you can avoid hassles during your trip. Also, you can also take a look at itineraries posted by others and make sure you do not miss on the must do things.</p>
 			</div>
-		</div>
-	</section>
-	<section id="about">
-		<div class="row">
-			<h2>About</h2>
-			<p>Whether it be to look up a previous trip itinerary or to plan a trip in the future, the Itinerary Saver is here to help. Simply save your itinerary here as and when you plan your trip so that you can avoid hassles during your trip. Also, you can also take a look at itineraries posted by others and make sure you do not miss on the must do things.</p>
-		</div>
-	</section>
+		</section>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<script src="mockdata.js"></script>
