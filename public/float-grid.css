@@ -53,7 +53,7 @@
 
 /* Non-mobile, grid */
 @media only screen and (min-width: 640px) {
-  .col-1{
+  .col-1 {
     width:12.5%;
   }
 
@@ -72,9 +72,14 @@
     width: 50%;
   }
 
+  .col-9 {
+    width: 75%;
+  }
   /* 12 columns */
   .col-12 {
     width: 100%;
   } 
 }
+
+
 

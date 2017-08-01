@@ -17,6 +17,10 @@ var renderNewItineraryAdded = function(data) {
     window.location.href = 'index.html?newadded=true';
 };
 
+$(".js-cancel").click(function(event) {
+    window.location.href = 'index.html#itineraries';
+});
+
 //Event listener for travel partner 'no' radio input 
 $("#choiceno").click(function(event) {
 	$("#tpdetails").attr("disabled", true);

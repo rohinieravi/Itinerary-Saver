@@ -41,13 +41,18 @@ var displayItineraries = function(data) {
 //Renders all filtered itineraries
 var renderItineraryList = function(itinList) {
 	var list='';
-	itinList.forEach(function(item) {
-		list += "<div class='row tRow'>"+
-				"<div class='col-3 js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a></div>" +
-				"<div class='col-3'>" + item.poster + "</div>" +
-				"<div class='col-3'>" + new Date(item.postedDate).toDateString() + "</div>"+
-				"</div>";
-	});
+	if(itinList.length === 0) {
+		list = "<div class ='row tRow'>No results found.</div>"
+	}
+	else {
+		itinList.forEach(function(item) {
+			list += "<div class='row tRow'>"+
+					"<div class='col-9 js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a>" +
+					" by " + item.poster +
+					" posted on " + new Date(item.postedDate).toDateString() + "</div>"+
+					"</div>";
+		});
+	}
 	$(".js-itinerarylist").append(list);
 }
 
@@ -71,10 +76,16 @@ $(function() {
 	}
 });
 
+$(".js-addItin").click(function(event) {
+    window.location.href = 'add-itinerary.html';
+});
+
 //Event listener for the radio input to filter itinerary list
 $("input[name='itinerary']").click(function(event) {
 	$(".tRow").remove();
 	getAndDisplayItineraries();
+	$('.js-input').val("");
+
 });
 
 //Event listener for search form that generates itinerary list for specified destination
