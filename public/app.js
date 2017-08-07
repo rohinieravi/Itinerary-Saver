@@ -41,15 +41,19 @@ var displayItineraries = function(data) {
 //Renders all filtered itineraries
 var renderItineraryList = function(itinList) {
 	var list='';
+	var itinType = $("input[name='itinerary']:checked").val();
+
 	if(itinList.length === 0) {
 		list = "<div class ='row tRow'>No results found.</div>"
 	}
 	else {
 		itinList.forEach(function(item) {
 			list += "<div class='row tRow'>"+
-					"<div class='col-9 js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a>" +
-					" by " + item.poster +
-					" posted on " + new Date(item.postedDate).toDateString() + "</div>"+
+					"<div class='col-12 js-destination' ><a href='itinerarydetails.html?id="+item.id+"'>" + item.destination + "</a>" ;
+			if(itinType === "otheritinerary") {
+				list += " by <b>" + item.poster + "</b>";
+			}
+			list +=	" posted on <i>" + new Date(item.postedDate).toDateString() + "</i></div>"+
 					"</div>";
 		});
 	}
