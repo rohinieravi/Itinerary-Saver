@@ -5,7 +5,7 @@
 .bg {
 	background-image: url('images/bgImage.jpg');
 	height:540px;
-	background-size: contain;
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center top;
 }
@@ -24,6 +24,11 @@ header {
 	padding: 10px 0 10px 0;
 	background-color: black;
 	color: white;
+	text-align: center;
+}
+
+header h1 {
+	font-size:30px;
 }
 
 h1, h3 {
@@ -38,18 +43,35 @@ textarea, input {
 	max-width: 100%;
 }
 
+textarea, input, button {
+	font-size: 16px;
+	font-family: 'Philosopher', sans-serif;
+}
+
 .links {
 	padding: 10px;
-	text-align: right;
+	text-align: center;
 }
 
 .links a {
-	margin-left: 30px;
+	margin-right: 30px;
 	color: white;
 }
 
-#about, #itineraries {
-	padding: 80px 0;
+#itineraries {
+	padding: 15px 0;
+}
+
+#about {
+	padding: 100px 0;
+}
+
+.searchfilters input, label, button {
+	margin-bottom: 15px;
+}
+
+.searchfilters label {
+	margin-right: 10px;
 }
 
 #destination, #days, #budget {
@@ -71,7 +93,6 @@ textarea, input {
 
 .js-search {
 	display: inline; 
-	margin-left: 20px;
 }
 
 .newadded {
@@ -80,16 +101,19 @@ textarea, input {
 }
 
 .js-input {
-	width:300px;
+	width:200px;
 	height:30px;
 	padding: 5px;
 	border-radius: 5px;
 }
 
+.option {
+	display: inline-block;
+}
+
 #search, .js-addItin {
 	height: 30px;
 	border-radius: 5px;
-	font-family: 'Philosopher', sans-serif;
 }
 
 .js-itinerarylist {
@@ -103,6 +127,7 @@ textarea, input {
 .js-itinerarydetails {
 	margin:40px 0 40px 0;
 }
+
 .js-itinerarydetails div{
 	margin-bottom: 15px;
 }
@@ -126,11 +151,10 @@ textarea, input {
 }
 
 #submit, .js-cancel {
-	display: block;
 	height:30px;
 	border-radius: 5px;
-	font-family: 'Philosopher', sans-serif;
-	padding:0 10px;
+	padding:0 5px;
+	margin-right: 30px;
 }
 
 #destination {

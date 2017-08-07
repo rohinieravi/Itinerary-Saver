@@ -81,5 +81,27 @@
   } 
 }
 
+@media only screen and (min-width: 425px) {
 
+  .js-input {
+    width: 300px;
+  }
+  
+}
+
+@media only screen and (min-width: 640px) {
+
+  header {
+    text-align: left;
+  }
+
+  header h1 {
+    font-size:40px;
+  }
+
+  .links {
+    text-align: right;
+  }
+  
+}
 
