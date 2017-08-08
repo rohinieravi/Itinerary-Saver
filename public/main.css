@@ -78,6 +78,10 @@ textarea, input, button {
 	padding: 40px 0;
 }
 
+#about p {
+	line-height: 1.5;
+}
+
 .searchfilters input, label, button {
 	margin-bottom: 15px;
 }
