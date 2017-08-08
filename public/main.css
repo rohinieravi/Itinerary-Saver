@@ -10,17 +10,18 @@
 	background-position: center top;
 }
 
+a {
+	text-decoration: none;
+}
+
 body {
 	margin:0;
-	background-image: linear-gradient(rgba(0,0,0,0.2),
-      rgba(0,0,0,0.1));
-	background-color: lightyellow;
+	background-color: white;
 	font-family: 'Philosopher', sans-serif;
 	font-size: 20px;
 }
 
 header {
-	height:80px;
 	padding: 10px 0 10px 0;
 	background-color: black;
 	color: white;
@@ -39,8 +40,15 @@ img {
 	width: 100%;
 }
 
+textarea {
+	border-width: 2px;
+	border-style: inset;
+	border-color: initial;
+}
+
 textarea, input {
 	max-width: 100%;
+	border-radius: 5px;
 }
 
 textarea, input, button {
@@ -49,13 +57,17 @@ textarea, input, button {
 }
 
 .links {
-	padding: 10px;
+	padding: 10px 0;
 	text-align: center;
 }
 
 .links a {
+	color: darkgoldenrod;
+	font-weight: bold;
+}
+
+.itinLink{
 	margin-right: 30px;
-	color: white;
 }
 
 #itineraries {
@@ -63,7 +75,7 @@ textarea, input, button {
 }
 
 #about {
-	padding: 100px 0;
+	padding: 40px 0;
 }
 
 .searchfilters input, label, button {
@@ -85,6 +97,11 @@ textarea, input, button {
 .js-destination {
 	margin-bottom: 10px;
 	
+}
+
+.js-destination a{
+	color: darkgoldenrod;
+	font-weight: bold;
 }
 
 .newitinerary {
@@ -111,9 +128,16 @@ textarea, input, button {
 	display: inline-block;
 }
 
-#search, .js-addItin {
+#search, .js-addItin, #submit, .js-cancel, .js-back {
 	height: 30px;
 	border-radius: 5px;
+	background-color: darkgoldenrod;
+	color: white;
+	padding: 0 5px;
+}
+
+#submit{
+	margin-right: 30px;
 }
 
 .js-itinerarylist {
@@ -122,6 +146,15 @@ textarea, input, button {
 
 .js-itinDetails {
 	margin: 10px 0 10px 0;
+}
+
+#addItin h2 {
+	margin-bottom: 0;
+}
+
+#addItin p {
+	margin-top: 0;
+	font-size: 15px;
 }
 
 .js-itinerarydetails {
@@ -148,13 +181,6 @@ textarea, input, button {
 .lrgTextArea {
 	height: 80px;
 	overflow-y: scroll;
-}
-
-#submit, .js-cancel {
-	height:30px;
-	border-radius: 5px;
-	padding:0 5px;
-	margin-right: 30px;
 }
 
 #destination {

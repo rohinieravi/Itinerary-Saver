@@ -31,3 +31,7 @@ $(function(){
 		queryString = queryString.substring(1);
 		getItinDetailsById(parseQueryString(queryString).id,renderItineraryDetails);
 });
+
+$(".js-back").click(function(event) {
+    window.location.href = 'index.html#itineraries';
+});
