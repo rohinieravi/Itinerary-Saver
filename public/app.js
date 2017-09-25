@@ -72,12 +72,41 @@ var getAndDisplayItinerariesByDest = function(query) {
 
 //Invokes getAndDisplayItineraries method on page load
 $(function() {
-	getAndDisplayItineraries();
 	var queryString = window.location.search;
 	queryString = queryString.substring(1);
-	if(parseQueryString(queryString).newadded === "true"){
-			$(".newadded").removeClass("hidden");
+	if(loggedin === false && parseQueryString(queryString).loggedin !== "true") {
+		$(".demoUser").addClass("hidden");
 	}
+	else {
+		getAndDisplayItineraries();
+		$(".demolink").addClass("hidden");
+		loggedin = true;
+		if(parseQueryString(queryString).newadded === "true"){
+			$(".newadded").removeClass("hidden");
+		}
+	}
+});
+
+$(".js-userlogin").submit(function(event) {
+	event.preventDefault();
+	var currUsername = $("#username").val();
+	var currPassword = $("#password").val();
+	if(currUsername == DEMO_USERNAME && currPassword == DEMO_PASSWORD) { 
+		loggedin = true;
+		lity.current().close();
+		$(".demoUser").removeClass("hidden");
+		$(".demolink").addClass("hidden");
+		getAndDisplayItineraries();
+	}
+	else {
+		$(".js-comments").removeClass("hidden");
+	}
+
+});
+
+$(".logout").click(function(event) {
+	loggedin = false;
+	window.location.href = 'index.html';
 });
 
 $(".js-addItin").click(function(event) {

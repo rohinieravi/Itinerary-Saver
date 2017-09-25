@@ -14,11 +14,11 @@ var postItineraryDetails = function(item, callback) {
 //callback method that confirms that the new itinerary was added
 var renderNewItineraryAdded = function(data) {
 	window.location.reload(true);
-    window.location.href = 'index.html?newadded=true';
+    window.location.href = 'index.html?newadded=true&loggedin=true';
 };
 
 $(".js-cancel").click(function(event) {
-    window.location.href = 'index.html#itineraries';
+    window.location.href = 'index.html?loggedin=true';
 });
 
 //Event listener for travel partner 'no' radio input 
