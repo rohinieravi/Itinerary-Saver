@@ -66,7 +66,7 @@ textarea, input, button {
 	font-weight: bold;
 }
 
-.itinLink{
+.itinLink, .about {
 	margin-right: 30px;
 }
 
@@ -132,12 +132,26 @@ textarea, input, button {
 	display: inline-block;
 }
 
-#search, .js-addItin, #submit, .js-cancel, .js-back {
+#search, .js-addItin, #submit, .js-cancel, .js-back, #trial, #login {
 	height: 30px;
 	border-radius: 5px;
 	background-color: darkgoldenrod;
 	color: white;
 	padding: 0 5px;
+}
+
+#trial {
+	height: 40px;
+	width:300px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 5px 10px;
+	margin: 50px auto 0 auto;
+	display: block;
+	font-size: 20px;
+	border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
 }
 
 #submit{
@@ -193,4 +207,20 @@ textarea, input, button {
 
 .hidden {
 	display:none;
+}
+
+.js-userlogin {
+	padding: 20px;
+}
+
+.js-userlogin input {
+		margin-bottom: 15px;
+		padding: 5px;
+		width: 100%;
+}
+
+.js-comments {
+	color: red;
+	font-size: 16px;
+	padding-bottom: 10px;
 }

@@ -33,5 +33,5 @@ $(function(){
 });
 
 $(".js-back").click(function(event) {
-    window.location.href = 'index.html#itineraries';
+    window.location.href = 'index.html?loggedin=true';
 });

@@ -5,6 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="float-grid.css">
 	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+	<link href="dist/lity.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
 	<header>
@@ -12,15 +14,19 @@
 			<div class="col-6">	
 				<h1>Itinerary Saver</h1>
 			</div>
-			<div class="links col-6">
+			<div class="links col-6 demoUser">
 				<a href="#itineraries" class="itinLink">Itineraries</a>
-				<a href="#about">About</a>
+				<a href="#about" class="about">About</a>
+				<a href=# class="logout">Logout</a>
+			</div> 
+			<div class="links col-6 demo">
+				<a href="#inline" data-lity class="demolink">Demo User</a>
 			</div>
 		</div>
 	</header>
 	<main>
 		<div class="bg"></div>
-		<section id="itineraries">
+		<section id="itineraries" class="demoUser">
 			<div class="row">
 				<div class="col-12">
 					<h2>Itineraries</h2>
@@ -52,10 +58,37 @@
 			<div class="row">
 				<h2>About</h2>
 				<p>Whether it be to look up a previous trip itinerary or to plan a trip in the future, the Itinerary Saver is here to help. Simply save your itinerary here as and when you plan your trip so that you can avoid hassles during your trip. You can also take a look at itineraries posted by others and make sure you do not miss on the must do things.</p>
+				<div class="demo demolink">
+					<a href="#inline" id="trial" data-lity>Check out a demo user !</a>
+				</div>
 			</div>
+			<div id="inline" style="background:#fff" class="lity-hide">
+				<form class="js-userlogin">
+					<div class="row">
+							<label for="username">Username </label>
+						</div>
+					<div class="row">
+							<input type="text" name="username" id="username" required>
+					</div>
+					<div class="row">
+						<label for="password">Password </label>
+					</div>
+					<div class="row">
+						<input type="password" name="password" id="password" required>
+					</div>
+					<div class="row">
+						<input type="submit" value="Login" id="login">
+					</div>
+					<div class="row js-comments hidden">Incorrect Username or Password !</div>
+					<div class="row">Demo Login:</div>
+					<div class="row">Username: demo, Password: 123 </div>
+				</form>
+			</div>
+			
 		</section>	
 	</main>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script src="dist/lity.js"></script>
 	<script src="mockdata.js"></script>
 	<script src="app.js"></script>
 </body>
